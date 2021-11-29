@@ -15,6 +15,7 @@ dependencies:
   - openpyxl=3.0.9
   - tabulate=0.8.9
   - matplotlib=3.4.3
+  - protobuf=3.15.8 # 适应 spikingjelly 依赖 onnx 1.8.0
 
   - pip=21.3
   - pip:
