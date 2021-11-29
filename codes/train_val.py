@@ -1,3 +1,5 @@
+from pathlib import Path
+
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
@@ -81,7 +83,7 @@ if __name__ == '__main__':
     use_max_pool = args.use_max_pool
     device = args.device
     dataset_name = args.dataset_name
-    dataset_dir = '/userhome/datasets/' + dataset_name
+    dataset_dir = 'datasets/' + dataset_name
     # dataset_dir = '/raid/fangw01/cifar10'
     log_dir_prefix = args.log_dir_prefix
     T = args.T
@@ -106,8 +108,7 @@ if __name__ == '__main__':
 
     pt_dir = os.path.join(log_dir_prefix, 'pt_' + dir_name)
     print(log_dir, pt_dir)
-    if not os.path.exists(pt_dir):
-        os.mkdir(pt_dir)
+    Path(pt_dir).mkdir(exist_ok=True, parents=True)
     class_num = 10  # 绝大多数数据集为10，如果不一样，在新建dataloader的时候再修改
     if dataset_name == 'MNIST':
         transform_train, transform_test = models.get_transforms(dataset_name)
